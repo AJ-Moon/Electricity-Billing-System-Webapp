@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Retrieval</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="container">
+    <h2>Billing Information Retrieval</h2>
+    <form action="/bill-retrieval" method="post">
+        <label for="customer_id">Customer ID:</label>
+        <input type="text" id="customer_id" name="customer_id" required>
+        <label for="connection_id">Connection ID:</label>
+        <input type="text" id="connection_id" name="connection_id" required>
+        <label for="month">Month:</label>
+        <input type="text" id="month" name="month" required>
+        <label for="year">Year:</label>
+        <input type="text" id="year" name="year" required>
+        <button type="submit">Retrieve Bill</button>
+    </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Details</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Bill Details for Customer {{ bill_details.customer_id }} - {{ bill_details.month }}</h2>
+
+        <div class="section">
+            <h3>Customer Details</h3>
+            <table class="details-table">
+                <tr>
+                    <td>Customer Name:</td>
+                    <td>{{ bill_details.customer_name }}</td>
+                </tr>
+                <tr>
+                    <td>Customer Address:</td>
+                    <td>{{ bill_details.customer_address }}</td>
+                </tr>
+                <tr>
+                    <td>Customer Phone:</td>
+                    <td>{{ bill_details.customer_phone }}</td>
+                </tr>
+                <tr>
+                    <td>Customer Email:</td>
+                    <td>{{ bill_details.customer_email }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h3>Connection Details</h3>
+            <table class="details-table">
+                <tr>
+                    <td>Connection Type:</td>
+                    <td>{{ bill_details.connection_type }}</td>
+                </tr>
+                <tr>
+                    <td>Division, Subdivision:</td>
+                    <td>{{ bill_details.division }}, {{ bill_details.subdivision }}</td>
+                </tr>
+                <tr>
+                    <td>Connection Date:</td>
+                    <td>{{ bill_details.installation_date }}</td>
+                </tr>
+                <tr>
+                    <td>Meter Type:</td>
+                    <td>{{ bill_details.meter_type }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h3>Billing Summary</h3>
+            <p class="bill-summary"><u>Total Bill Amount: {{ bill_details.bill_amount }}</u></p>
+            <table class="details-table">
+                <tr>
+                    <td>Issue Date:</td>
+                    <td>{{ bill_details.issue_date }}</td>
+                </tr>
+                <tr>
+                    <td>Net Peak Units:</td>
+                    <td>{{ bill_details.net_peak_units }}</td>
+                </tr>
+                <tr>
+                    <td>Net Off-Peak Units:</td>
+                    <td>{{ bill_details.net_off_peak_units }}</td>
+                </tr>
+                <tr>
+                    <td>Tax amount:</td>
+                    <td>{{ bill_details.tax_amount }}</td>
+                </tr>
+                <tr>
+                    <td>Fixed fee amount:</td>
+                    <td>{{ bill_details.fixed_fee_amount }}</td>
+                </tr>
+                <tr>
+                    <td>Arrears amount:</td>
+                    <td>{{ bill_details.arrears_amount }}</td>
+                </tr>
+                <tr>
+                    <td>Due Date:</td>
+                    <td>{{ bill_details.due_date }}</td>
+                </tr>
+                <tr>
+                    <td>Amount After Due Date:</td>
+                    <td>{{ bill_details.amount_after_due_date }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h4>Fixed Fee Details</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tariff in bill_details.fixed_fee %}
+                    <tr>
+                        <td>{{ tariff.name }}</td>
+                        <td>{{ tariff.amount }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h4>Tariff Details</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tariff Name</th>
+                        <th>Units</th>
+                        <th>Rate</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tariff in bill_details.tariffs %}
+                    <tr>
+                        <td>{{ tariff.name }}</td>
+                        <td>{{ tariff.units }}</td>
+                        <td>{{ tariff.rate }}</td>
+                        <td>{{ tariff.amount }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h4>Taxes</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tax Name</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tax in bill_details.taxes %}
+                    <tr>
+                        <td>{{ tax.name }}</td>
+                        <td>{{ tax.amount }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h4>Subsidies</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Subsidy Name</th>
+                        <th>Subsidy Provider Name</th>
+                        <th>Rate per unit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for subsidy in bill_details.subsidies %}
+                    <tr>
+                        <td>{{ subsidy.name }}</td>
+                        <td>{{ subsidy.provider_name }}</td>
+                        <td>{{ subsidy.rate_per_unit }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h4>Billing History</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Billing Month</th>
+                        <th>Amount Due</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bill in bill_details.bills_prev %}
+                    <tr>
+                        <td>{{ bill.month }}</td>
+                        <td>{{ bill.amount }}</td>
+                        <td>{{ bill.due_date }}</td>
+                        <td>{{ bill.status }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

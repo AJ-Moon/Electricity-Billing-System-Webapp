@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Receipt</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Payment Receipt</h2>
+        <table class="details-table">
+            <tr>
+                <td>Bill ID:</td>
+                <td>{{ payment_details.bill_id }}</td>
+            </tr>
+            <tr>
+                <td>Amount Paid:</td>
+                <td>${{ payment_details.amount }}</td>
+            </tr>
+            <tr>
+                <td>Payment Method ID:</td>
+                <td>{{ payment_details.payment_method_id }}</td>
+            </tr>
+            <tr>
+                <td>Payment Method Description:</td>
+                <td>{{ payment_details.payment_method_description }}</td>
+            </tr>
+            <tr>
+                <td>Payment Date:</td>
+                <td>{{ payment_details.payment_date }}</td>
+            </tr>
+            <tr>
+                <td>Payment Status:</td>
+                <td>{{ payment_details.payment_status }}</td>
+            </tr>
+            <tr>
+                <td>Outstanding amount:</td>
+                <td>{{ payment_details.outstanding_amount }}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

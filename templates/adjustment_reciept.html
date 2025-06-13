@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adjustment Receipt</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Adjustment Receipt</h2>
+        <table class="details-table">
+            <tr>
+                <td>Adjustment ID:</td>
+                <td>{{ adjustment_receipt.adjustment_id }}</td>
+            </tr>
+            <tr>
+                <td>Bill ID:</td>
+                <td>{{ adjustment_receipt.bill_id }}</td>
+            </tr>
+            <tr>
+                <td>Officer Name:</td>
+                <td>{{ adjustment_receipt.officer_name }}</td>
+            </tr>
+            <tr>
+                <td>Officer Designation:</td>
+                <td>{{ adjustment_receipt.officer_designation }}</td>
+            </tr>
+            <tr>
+                <td>Original Bill Amount:</td>
+                <td>{{ adjustment_receipt.original_bill_amount }}</td>
+            </tr>
+            <tr>
+                <td>Adjustment Amount:</td>
+                <td>{{ adjustment_receipt.adjustment_amount }}</td>
+            </tr>
+            <tr>
+                <td>Adjustment Reason</td>
+                <td>{{ adjustment_receipt.adjustment_reason }}</td>
+            </tr>
+            <tr>
+                <td>Adjustment Date:</td>
+                <td>{{ adjustment_receipt.adjustment_date }}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
